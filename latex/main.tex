@@ -1,0 +1,204 @@
+\documentclass[a4paper, twoside]{article}
+\title{Standard Code Library}
+\author{AntiLeaf}
+\date{}
+
+% green= '#10BC72' # '#C3E88D'
+% cyan= '#00A1D6' # '#89DDFF'
+
+% \usepackage{zxjatype}
+% \setjamainfont{ipaexm.ttf}
+
+\usepackage{graphicx, amssymb, amsmath, textcomp, booktabs}
+% \usepackage[libertine, vvarbb]{newtxmath}
+\usepackage[scr=rsfso]{mathalfa}
+%\usepackage[lining, semibold, type1]{libertine} % a bit lighter than Times--no osf in math
+\usepackage[T1]{fontenc} % best for Western European languages
+\usepackage{minted}
+\usepackage{listings, color, setspace, titlesec, fancyhdr, mdframed, multicol}
+\usepackage{fontspec}
+\usepackage{ucharclasses}
+\usepackage{xunicode, xltxtra}
+\usepackage{pdfpages}
+\usepackage{tocloft}
+\usepackage{nameref}
+\usepackage{verbatim}
+\usepackage{relsize}
+\usepackage[normalem]{ulem}
+
+\usepackage{color,xcolor}
+
+\usepackage{enumitem}
+\setenumerate[1]{itemsep=5pt,partopsep=0pt,parsep=\parskip,topsep=5pt,itemindent=1em,leftmargin=3pt}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt,itemindent=1em,leftmargin=3pt}
+\setdescription{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt,itemindent=1em,leftmargin=3pt}
+
+\setlength{\itemindent}{0em}
+\setlength\parindent{0em}
+
+\definecolor{light-gray}{gray}{0.9}    % 1.灰度
+\definecolor{black}{gray}{0.0}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+%configure space between the two columns
+\setlength{\columnsep}{13pt}
+
+%configure fonts
+\setmonofont{Consolas}[Scale=0.8]
+\newfontfamily\substitutefont{等线}[Scale=0.9]
+\setTransitionsForChinese{\begingroup\substitutefont}{\endgroup}
+
+%configure minted to display codes
+\definecolor{Gray}{rgb}{0.9,0.9,0.9}
+
+%configure section style of table of content
+\renewcommand\cftsecfont{\Large}
+
+%configure section style
+\titleformat{\section}
+{\huge\bfseries}			% The style of the section title
+{\thesection }				% a prefix
+{15pt}						% How much space exists between the prefix and the title
+{}					% How the section is represented
+% \titleformat{\section}{\huge}{}{0pt}{}
+% \titlespacing{\section}{0pt}{0pt}{0pt}
+% \titlespacing{\subsection}{0pt}{0pt}{0pt}
+% \titlespacing{\subsubsection}{0pt}{0pt}{0pt}
+
+\usepackage{fancyhdr}
+\usepackage[inner=0.9cm, outer=0.7cm, top=1.7cm, bottom=0.4cm]{geometry}
+% inner = 1.35cm, outer = 0.9cm
+
+\setlength{\headsep}{0.1cm}
+\setlength{\footskip}{0.7cm}
+
+\fancypagestyle{fancy} {
+
+	% \pagestyle{fancy}
+
+	\chead{Standard Code Library}
+	\lhead{\nouppercase\leftmark}
+	\rhead{\nouppercase\rightmark}
+	\cfoot{\thepage}
+
+}
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\setminted[cpp]{
+	style=materiallight,
+	mathescape,
+	linenos,
+	autogobble,
+	baselinestretch=0.9,
+	tabsize=4,
+	fontsize=\normalsize,
+	%bgcolor=Gray,
+	frame=single,
+	framesep=1mm,
+	framerule=0.3pt,
+	numbersep=1mm,
+	breaklines=true,
+	breaksymbolsepleft=2pt,
+	%breaksymbolleft=\raisebox{0.8ex}{ \small\reflectbox{\carriagereturn}}, %not moe!
+	%breaksymbolright=\small\carriagereturn,
+	breakbytoken=false,
+	showtabs=true,
+	tab={\relscale{1.08} $\color{light-gray}{\vert} \ \ \ $ \relscale{1}},
+}
+
+\setminted[python]{
+	style=materiallight,
+	mathescape,
+	linenos,
+	autogobble,
+	baselinestretch=0.9,
+	tabsize=4,
+	fontsize=\normalsize,
+	%bgcolor=Gray,
+	frame=single,
+	framesep=0.8mm,
+	framerule=0.3pt,
+	numbersep=0.8mm,
+	breaklines=true,
+	breaksymbolsepleft=2pt,
+	%breaksymbolleft=\raisebox{0.8ex}{ \small\reflectbox{\carriagereturn}}, %not moe!
+	%breaksymbolright=\small\carriagereturn,
+	breakbytoken=false,
+	showtabs=true,
+	tab={\relscale{1.08} $\color{light-gray}{\vert} \ \ \ $ \relscale{1}},
+}
+
+\begin{document}
+
+	\begin{titlepage}
+		
+		\includepdf{cover_new.pdf}
+
+	\end{titlepage}
+
+	\pagestyle{plain}
+
+	\pagenumbering{roman}
+	\setcounter{page}{1}
+
+	\begin{multicols}{2}
+		
+		\begin{spacing}{1}
+			\renewcommand{\contentsname}{\huge{目录}}
+			\tableofcontents
+		\end{spacing}
+
+	\end{multicols}
+
+	\newpage
+
+	\pagestyle{fancy}
+
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+
+	\begin{multicols}{2}
+		\section{数学}
+			\subsection{FWT}
+				\input{../src-midori/math/FWT.tex}
+
+			\subsection{多项式}
+				\subsubsection{FFT}
+					\inputminted{cpp}{../src/math/FFT.cpp}
+
+		\newpage
+		\section{数论}
+
+			\subsection{$O(n)$预处理逆元}
+				\inputminted{cpp}{../src/numbertheory/O(n)求逆元.cpp}
+				
+		\newpage
+		\section{图论}
+
+			\subsection{最小生成树}
+				\subsubsection{Boruvka算法}
+					\input{../src/graph/Boruvka.tex}
+				
+				\subsubsection{动态最小生成树}
+					\input{../src/graph/动态最小生成树.tex}
+			
+			\subsection{费用流}
+				\subsubsection{SPFA费用流}
+					\inputminted{cpp}{../src/graph/SPFA费用流.cpp}
+
+				\subsubsection{Dijkstra费用流}
+					\input{../src/graph/dijkstra费用流.tex}
+
+				% \subsubsection{zkw费用流}
+
+
+				% \subsubsection{网络单纯形}
+
+	\end{multicols}
+
+	\includepdf[pages = 1-10]{../src/misc/Cheat.pdf}
+\end{document}

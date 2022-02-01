@@ -1,0 +1,38 @@
+矩阵表示：
+
+or 形式 (子集卷积):
+$$\begin{aligned}T_{ij} = [i|j=i] = [j \in i]\end{aligned}$$
+$$
+\begin{aligned}
+\begin{pmatrix}
+    1&1\\0&1
+\end{pmatrix}
+\end{aligned}
+$$
+
+and 形式 (超集卷积):
+$$\begin{aligned}T_{ij} = [i\&j=i] = [i \in j]\end{aligned}$$
+$$
+\begin{aligned}
+\begin{pmatrix}
+    1&0\\1&1
+\end{pmatrix}
+\end{aligned}
+$$
+
+xor 形式 ($T$与自身互为逆矩阵):
+$$\begin{aligned}T_{ij} = (-1)^{parity(i\&j)}\end{aligned}$$
+$$
+\begin{aligned}
+\begin{pmatrix}
+    1&-1\\-1&1
+\end{pmatrix}
+\end{aligned}
+$$
+
+\inputminted{cpp}{../src-midori/math/FWT.cpp}
+
+
+
+
+

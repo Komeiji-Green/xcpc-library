@@ -1,0 +1,6 @@
+/latex/*.toc
+/latex/*.aux
+/latex/*.log
+/latex/*.synctex.gz
+/latex/_minted-main/
+/_minted-main/
