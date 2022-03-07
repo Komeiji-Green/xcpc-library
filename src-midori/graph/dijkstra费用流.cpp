@@ -27,7 +27,7 @@ void init(int n) {
 ll h[N], dis[N]; // bool vis[N];
 int pe[N]; // 父边
 
-// spfa 只用来预处理 h，不跑流
+// spfa 只用来预处理 h，不跑流，也可以用来跑流（见注释）
 // h 在 flow_dij 调用时清空
 void spfa(int s, int n) {
     static bool inq[N];
@@ -49,7 +49,7 @@ void spfa(int s, int n) {
             if (e[i].w > 0) {
                 int y = e[i].to;
 
-                if (dis[y] < dis[x] + e[i].c) {
+                if (dis[y] > dis[x] + e[i].c) {
                     // pe[y] = i; 若要跑流，则加上这一行
                     dis[y] = dis[x] + e[i].c;
                     if (!inq[y]) {
