@@ -67,4 +67,24 @@
 			]
 		}
 	],
+	"editor.fontSize": 14,
+	"emmet.excludeLanguages": [
+		"markdown"
+	],
+	// vscode默认启用了根据文件类型自动设置tabsize的选项
+	"editor.detectIndentation": true,
+	// // 重新设定tabsize
+	"editor.tabSize": 4,
+	// #每次保存的时候自动格式化 
+	"editor.formatOnSave": true,
+	"editor.formatOnSaveMode": "modifications",
+	// "editor.defaultFormatter": "xaver.clang-format",
+	"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4,}",
+	"C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, }",
+	"[cpp]": {
+		"editor.defaultFormatter": "ms-vscode.cpptools"
+	},
+	"C_Cpp.formatting": "Default",
+	// "C_Cpp.vcFormat.indent.accessSpecifiers": true,
+	// "clang-format.fallbackStyle": "Google",
 }

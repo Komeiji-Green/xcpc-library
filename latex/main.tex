@@ -177,8 +177,54 @@
 		\newpage
 		\section{数论}
 
-			\subsection{$O(n)$预处理逆元}
-				\inputminted{cpp}{../src/numbertheory/O(n)求逆元.cpp}
+			\subsection{常见预处理与快速幂}
+				\inputminted{cpp}{../src-midori/number/常见预处理与快速幂.cpp}
+
+			\subsection{因数分解与素性判定}
+				\subsubsection{朴素因数分解}
+					\inputminted{cpp}{../src-midori/number/素因数分解.cpp}
+				\subsubsection{Miller-Rabin 与 Pollard-Rho}
+					\inputminted{cpp}{../src-midori/number/miller_rabin-pollard_rho.cpp}
+
+			\subsection{筛法}
+				\subsubsection{线性筛}
+					\inputminted{cpp}{../src-midori/number/线性筛.cpp}
+				\subsubsection{Min25 筛}
+					\inputminted{cpp}{../src-midori/number/min25.cpp}
+				% \subsection{杜教筛}
+
+			\subsection{扩展欧几里得}
+				\inputminted{cpp}{../src-midori/number/exgcd.cpp}
+
+			\subsection{中国剩余定理}
+				% \subsection{基本公式}
+				\subsubsection{两个数的 crt}
+					\inputminted{cpp}{../src-midori/number/两个数的crt.cpp}
+				\subsubsection{excrt}
+					\inputminted{cpp}{../src-midori/number/excrt.cpp}
+			
+			\subsection{卢卡斯定理}
+				\subsubsection{模素数卢卡斯}
+					\inputminted{cpp}{../src-midori/number/lucas.cpp}
+				\subsubsection{扩展卢卡斯}
+					\inputminted{cpp}{../src-midori/number/exlucas.cpp}
+			
+			\subsection{原根与离散对数}
+				\subsubsection{原根}
+					\inputminted{cpp}{../src-midori/number/原根.cpp}
+				\subsubsection{BSGS}
+					\inputminted{cpp}{../src-midori/number/bsgs.cpp}
+			
+			% \subsection{二次剩余}
+
+			\subsection{杂项}
+				\subsubsection{大数整除小数取模}
+					\input{../src-midori/number/大数除小数.tex}
+				\subsubsection{立方根复杂度求 mobius 函数}
+					\inputminted{cpp}{../src-midori/number/立方根求mu.cpp}
+				\subsubsection{直接求 euler 函数}
+					\inputminted{cpp}{../src-midori/number/直接求phi.cpp}
+
 				
 		\newpage
 		\section{图论}
