@@ -11,7 +11,6 @@ inline void inc(Int &x, Int y, Int mod = P) {
     (x += y) >= mod ? x -= mod : 0; 
 }
 
-
 inline Int fpow(Int x, Int k = P - 2, Int mod = P) {
     Int r = 1;
     for (; k; k >>= 1, x = (ll) x * x % mod)
