@@ -1,19 +1,15 @@
 // h[i] = lcp(sa[i], sa[i - 1])
 // sa[i] = 排名为 i 的后缀（下标）
 // rk[i] = 后缀 i 的排名
+// 需要将 s[n] 设为一个比一切字符大的数，才能正确地输出 height
+// 不需要清空
 
 template<int MAXN> class SA {
     public:
     int n, sa[MAXN], rk[MAXN], h[MAXN];
 
     void init() {
-        memset(sa, 0, sizeof(sa));
-        memset(rk, 0, sizeof(rk));
-        memset(h, 0, sizeof(h));
-        memset(old_rk, 0, sizeof(old_rk));
-        memset(id, 0, sizeof(id));
-        memset(px, 0, sizeof(px));
-        memset(cnt, 0, sizeof(cnt));
+        // 不需要 init
     }
  
     void compute(int *s, int n, int m) {

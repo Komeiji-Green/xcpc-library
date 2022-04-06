@@ -1,0 +1,86 @@
+\textbf{辗转相除高斯消元}
+
+对于定义在环上而非域上的矩阵, 利用辗转相除进行消元
+
+下面例子中 mod 未必为素数, 通过辗转相除消元求行列式
+
+\begin{minted}{cpp}
+using ll = long long;
+
+int gauss(ll a[][N], int n) {
+    int ans = 1;
+    for (int j = 0; j < n; ++j) {
+        for (int i = j + 1; i < n; ++i) {
+            while (a[i][j]) {
+                int t = a[j][j] / a[i][j];
+                for (int k = j; k < m; ++k)
+                    a[j][k] = (a[j][k] + (mod - t) * a[i][k]) % mod; 
+                swap(a[i], a[j]);
+                ans = mod - ans;
+            }
+        }
+    }
+    for (int i = 0; i < n; ++i) 
+        ans = ans * a[i][i] % mod;
+    return ans;
+}
+\end{minted}
+
+\textbf{求秩与解线性方程组}
+
+分别维护行列指针, 维护每一列所对应的有效行, 有效行的总数即为秩
+
+线性方程组有唯一解当且仅当 列满秩 且 系数矩阵的秩 等于 增广矩阵的秩
+
+\begin{minted}{cpp}
+// 消增广矩阵, 注意第 m 行存放目标向量 
+// 若无解，返回空 vector
+// 若有无穷多解, 则非主元置 0
+
+vector<ll> gauss(ll a[][N], int n, int m) {
+    vector<int> row(m, -1);  // 每个变元所对应的有效行
+    vector<ll> ans(m, 0);
+
+    int r = 0;
+    for (int c = 0; c < m; ++c) { // 扫描每一列, 用 r 维护
+        int sig = -1;
+        for (int i = r; i < n; ++i) 
+            if(a[i][c]) {
+                sig = i; break;
+            }
+        if (sig == -1) continue; // 无效列
+
+        row[c] = r;
+        if (sig != r) 
+            swap(a[sig], a[r]);
+
+        ll inv = fpow(a[r][c], mod - 2);
+        for(int i = 0; i < n; ++i) {
+            if (i == r) continue;
+            ll del = inv * a[i][c] % mod;
+            for (int j = c; j <= m; ++j) 
+                a[i][j] = (a[i][j] + (mod - del) * a[r][j]) % mod; 
+        }
+        ++r;
+    }
+    
+    if (r < n && a[r][m]) {
+        cerr << "no solution!" << endl;
+        return {};
+    }
+
+    for (int i = 0; i < m; ++i) { // ax = b
+        if (row[i] != -1) {
+            ans[i] = fpow(a[row[i]][i]) * a[row[i]][m] % mod;
+        } else {
+            ans[i] = 0; // 非主元置 0 即为合法解
+        }
+    }
+
+    return ans;
+}
+\end{minted}
+
+\textbf{矩阵求逆}
+
+维护一个矩阵 $B$, 初始设为 $n$ 阶单位矩阵, 在消元的同时对 $B$ 进行一样的操作, 当把 $A$ 消成单位矩阵时 $B$ 就是逆矩阵.
