@@ -34,11 +34,11 @@ ll dfs(int pos, state st, int lead, int limit){
     for(int i = 0; i <= cur; ++i) {
         // 有前导0且当前位也是0
         if((!i) && lead) res += dfs(pos-1, st, 1, limit&&(i==cur));
-        // 有前导0且当前位非0（出现最高位）
+        // 有前导0且当前位非0 (出现最高位)
         else if(i && lead) res += dfs(pos-1, st.add(i), 0, limit&&(i==cur));
         else res += dfs(pos-1, st.add(i), 0, limit&&(i==cur));
     } 
-    // 没有前导0和最高限制时可以直接记录当前dp值以便下次搜到同样的情况可以直接使用。 
+    // 没有前导0和最高限制时可以直接记录当前dp值以便下次搜到同样的情况可以直接使用
     if(!limit&&!lead) dp[pos][wd][st] = res;
     return res;
 }

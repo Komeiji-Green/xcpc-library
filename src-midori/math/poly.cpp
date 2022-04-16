@@ -164,6 +164,32 @@ Poly inverse(Poly a) {
     return a;
 }
 
+// return x s.t. x^2 = a mod x^n, n = a.size()
+// not hold x is lexcicalgraphically smallest
+// no need (n & (n - 1)) == 0
+// require a[0] != 0
+Poly polysqrt(Poly a) {
+    int n = a.size();
+    if (n == 1) return {Modroot::calc(2, a[0], P)};
+
+    int m = ((n + 1) >> 1);
+    Poly b = polysqrt(Poly(a.begin(), a.begin() + m));
+    b.resize(n);
+
+    Poly c = b * b;
+    c.resize(n);
+
+    b *= 2;
+    c += a;
+
+    norm(b);
+
+    c = c * inverse(b);
+    c.resize(n);
+
+    return c;
+}
+
 // return: q(len = n - m + 1), a = b * q + r
 Poly operator/ (Poly a, Poly b) {  
     int n = a.size(), m = b.size();

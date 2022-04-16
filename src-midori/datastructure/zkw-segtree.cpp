@@ -1,3 +1,5 @@
+// 0-base
+
 struct SegT {
     typedef pair<int, int> T;
     T ini = {0, 0};

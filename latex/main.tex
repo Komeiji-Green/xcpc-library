@@ -169,13 +169,53 @@
 
 			\subsection{多项式}
 				\subsubsection{FFT}
-					\inputminted{cpp}{../src/math/FFT.cpp}
-
-			\subsection{组合数行区间和}
-				\inputminted{cpp}{../src-midori/math/杨辉三角行区间和.cpp}
+					\inputminted{cpp}{../src-midori/math/MTT.cpp}
+				\subsubsection{NTT}
+					\inputminted{cpp}{../src-midori/math/poly.cpp}
+				\subsubsection{拉格朗日插值}
+					\input{../src-midori/math/拉格朗日插值.tex}
+				\subsubsection{连通图计数}
+					\input{../src-midori/math/连通图计数.tex}
 			
-			\subsection{二项式反演}
-				\input{../src-midori/math/二项式反演.tex}
+			\subsection{线性代数}
+				\subsubsection{高斯消元}
+					\input{../src-midori/math/gauss.tex}
+				\subsubsection{矩阵树定理}
+					\input{../src-midori/math/矩阵树定理.tex}
+				\subsubsection{线性基}
+					\inputminted{cpp}{../src-midori/math/线性基上二分.cpp}
+			
+			\subsection{反演与容斥}
+				\subsubsection{二项式反演}
+					\input{../src-midori/math/二项式反演.tex}
+				\subsubsection{单位根反演}
+					\input{../src-midori/math/单位根反演.tex}
+				\subsubsection{Min-Max容斥}
+					\input{../src-midori/math/Min-Max容斥.tex}
+			
+			\subsection{组合数}
+				\subsubsection{常用组合数}
+					\input{../src-midori/math/常用组合数.tex}
+				\subsubsection{斯特林数}
+					\input{../src-midori/math/斯特林数.tex}
+				\subsubsection{欧拉数}
+					\input{../src-midori/math/欧拉数.tex}
+
+			\subsection{线性规划}
+				\subsubsection{对偶原理}
+					\input{../src-midori/math/线性规划对偶原理.tex}
+				
+			\subsection{杂项}
+				\subsubsection{约瑟夫环}
+					\inputminted{cpp}{../src-midori/math/约瑟夫环.cpp}
+				\subsubsection{杨辉三角行区间和}
+					\inputminted{cpp}{../src-midori/math/杨辉三角行区间和.cpp}
+				\subsubsection{辛普森积分}
+					\inputminted{cpp}{../src-midori/math/simpson.cpp}
+				\subsubsection{纳什均衡}
+					\input{../src-midori/math/纳什均衡.tex}
+				\subsubsection{康托展开}
+					\input{../src-midori/math/康托展开.tex}
 
 		\newpage
 		\section{数论}
@@ -198,6 +238,9 @@
 
 			\subsection{扩展欧几里得}
 				\inputminted{cpp}{../src-midori/number/exgcd.cpp}
+			
+			\subsection{扩展欧拉定理}
+				\input{../src-midori/number/扩展欧拉定理.tex}
 
 			\subsection{中国剩余定理}
 				% \subsection{基本公式}
@@ -227,36 +270,103 @@
 					\inputminted{cpp}{../src-midori/number/立方根求mu.cpp}
 				\subsubsection{直接求 euler 函数}
 					\inputminted{cpp}{../src-midori/number/直接求phi.cpp}
+		
+		\newpage
+		\section{数据结构}
+			\subsection{点分治}
+				\inputminted{cpp}{../src-midori/datastructure/点分治.cpp}
+			
+			\subsection{树链剖分}
+				\inputminted{cpp}{../src-midori/datastructure/树链剖分.cpp}
+			
+			\subsection{主席树}
+				\inputminted{cpp}{../src-midori/datastructure/主席树.cpp}
+			
+			\subsection{线段树合并}
+				\inputminted{cpp}{../src-midori/datastructure/线段树合并.cpp}
 
+			\subsection{zkw 线段树}
+				\inputminted{cpp}{../src-midori/datastructure/zkw-segtree.cpp}
+			
+			\subsection{矩形面积并}
+				\inputminted{cpp}{../src-midori/datastructure/矩形面积并.cpp}
 				
 		\newpage
 		\section{图论}
 
-			\subsection{最小生成树}
-				\subsubsection{Boruvka算法}
-					\input{../src/graph/Boruvka.tex}
-				
-				\subsubsection{动态最小生成树}
-					\input{../src/graph/动态最小生成树.tex}
+			\subsection{2-sat}
+				% \inputminted{cpp}{../src-midori/graph/2-sat.cpp}
 			
-			\subsection{费用流}
-				\subsubsection{SPFA费用流}
-					\inputminted{cpp}{../src/graph/SPFA费用流.cpp}
-
-				\subsubsection{Dijkstra费用流}
-					\input{../src/graph/dijkstra费用流.tex}
-
-				% \subsubsection{zkw费用流}
-
-
-				% \subsubsection{网络单纯形}
+			\subsection{Dinic 网络流}
+				\inputminted{cpp}{../src-midori/graph/dinic.cpp}
+			
+			\subsection{Dijkstra 费用流}
+				\inputminted{cpp}{../src-midori/graph/dijkstra费用流.cpp}
+			
+			\subsection{KM}
+				\inputminted{cpp}{../src-midori/graph/二分图最大带权匹配.cpp}
+			
+			\subsection{带花树}
+				\inputminted{cpp}{../src-midori/graph/带花树.cpp}
+			
+			\subsection{Hall 定理}
+				\input{../src-midori/graph/Hall定理.tex}
+			
 
 		\newpage
 		\section{字符串}
 
 			\subsection{后缀自动机}
 				\inputminted{cpp}{../src-midori/string/后缀自动机.cpp}
+			
+			\subsection{广义后缀自动机}
+				\subsubsection{对 Trie 建自动机}
+					\input{../src-midori/string/广义后缀自动机-trie.tex}
+				\subsubsection{对多模式串建自动机}
+					\inputminted{cpp}{../src-midori/string/广义后缀自动机-多模式串.cpp}
+				
+			\subsection{AC 自动机}
+				\inputminted{cpp}{../src-midori/string/AC自动机.cpp}
+			
+			\subsection{后缀数组}
+				\subsubsection{倍增}
+					\inputminted{cpp}{../src-midori/string/SA.cpp}
 
+				\subsubsection{SAIS}
+					\inputminted{cpp}{../src-midori/string/SAIS.cpp}
+			
+			\subsection{马拉车}
+				\inputminted{cpp}{../src-midori/string/manacher.cpp}
+		
+		\newpage
+		\section{动态规划}
+			\subsection{数位 DP}
+				\inputminted{cpp}{../src-midori/dp/数位dp.cpp}
+		
+		\newpage
+		\section{几何}
+			\inputminted{cpp}{../src-midori/geometry/geo-jry.cpp}
+		
+		%\newpage
+		%\section{杂项}
+		%	\subsection{java 高精度}
+		%		\inputminted{java}{../src-midori/other/高精度.tex}
+		%	\subsection{重载 umap}
+		%		\inputminted{cpp}{../src-midori/other/重载umap.cpp}
+		%	\subsection{模拟退火}
+		%		\inputminted{cpp}{../src-midori/other/模拟退火.cpp}
+		%	\subsection{对拍}
+		%		\subsubsection{windows 对拍}
+		%			\inputminted{bat}{../src-midori/other/duipai.bat}
+		%		\subsubsection{linux 对拍}
+		%			\inputminted{shell}{../src-midori/other/duipai.sh}
+		%	\subsection{快读}
+		%		\inputminted{cpp}{../src-midori/other/fread.cpp}
+		%	\subsection{随机}
+		%		\inputminted{cpp}{../src-midori/other/rand.cpp}
+		%	\subsection{python}
+		%		\inputminted{python}{../src-midori/python/sort.py}
+		
 	\end{multicols}
 
 	\includepdf[pages = 1-10]{../src/misc/Cheat.pdf}

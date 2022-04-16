@@ -40,7 +40,7 @@ struct point {
     point rotate(db k1) {
         return (point){x * cos(k1) - y * sin(k1), x * sin(k1) + y * cos(k1)};
     }
-    // 逆时针旋转 90°
+    // 逆时针旋转 90 度
     point rotleft() { return (point){-y, x}; }
     // 优先比较 x 坐标
     bool operator<(const point k1) const {
@@ -113,7 +113,7 @@ point proj(point k1, point k2, point q) {
     point k = k2 - k1;
     return k1 + k * (dot(q - k1, k) / k.abs2());
 }
-// q 关于直线 k1,k2 的镜像
+// q 关于直线 k1, k2 的镜像
 point reflect(point k1, point k2, point q) { return proj(k1, k2, q) * 2 - q; }
 // 判断 直线 (k1, k2) 和 直线 (k3, k4) 是否相交
 int checkLL(point k1, point k2, point k3, point k4) {
@@ -131,7 +131,7 @@ int intersect(db l1, db r1, db l2, db r2) {
         swap(l2, r2);
     return cmp(r1, l2) != -1 && cmp(r2, l1) != -1;
 }
-// 线段与线段相交判断（非严格相交）
+// 线段与线段相交判断 (非严格相交)
 int checkSS(point k1, point k2, point k3, point k4) {
     return intersect(k1.x, k2.x, k3.x, k4.x) &&
            intersect(k1.y, k2.y, k3.y, k4.y) &&
@@ -187,13 +187,13 @@ int parallel(line k1, line k2) { return sgn(cross(k1.dir(), k2.dir())) == 0; }
 int sameDir(line k1, line k2) {
     return parallel(k1, k2) && sgn(dot(k1.dir(), k2.dir())) == 1;
 }
-// 同向则左侧优先，否则按极角排序，用于半平面交
+// 同向则左侧优先, 否则按极角排序, 用于半平面交
 int operator<(line k1, line k2) {
     if (sameDir(k1, k2))
         return k2.include(k1[0]);
     return cmpangle(k1.dir(), k2.dir());
 }
-// k3 (半平面) 包含 k1,k2 的交点, 用于半平面交
+// k3 (半平面) 包含 k1, k2 的交点, 用于半平面交
 int checkpos(line k1, line k2, line k3) { return k3.include(getLL(k1, k2)); }
 // 求半平面交, 半平面是逆时针方向, 输出按照逆时针
 vector<line> getHL(vector<line> L) {
@@ -253,7 +253,7 @@ struct circle {
     int inside(point k) { return cmp(r, o.dis(k)); }
 };
 
-// 两圆位置关系（两圆公切线数量）
+// 两圆位置关系 (两圆公切线数量)
 int checkposCC(circle k1, circle k2) {
     if (cmp(k1.r, k2.r) == -1)
         swap(k1, k2);
@@ -270,7 +270,7 @@ int checkposCC(circle k1, circle k2) {
     else
         return 0;
 }
-// 直线与圆交点，沿 k2->k3 方向给出, 相切给出两个
+// 直线与圆交点, 沿 k2->k3 方向给出, 相切给出两个
 vector<point> getCL(circle k1, point k2, point k3) {
     point k = proj(k2, k3, k1.o);
     db d = k1.r * k1.r - (k - k1.o).abs2();
@@ -279,7 +279,7 @@ vector<point> getCL(circle k1, point k2, point k3) {
     point del = (k3 - k2).unit() * sqrt(max((db)0.0, d));
     return {k - del, k + del};
 }
-// 两圆交点，沿圆 k1 逆时针给出, 相切给出两个
+// 两圆交点, 沿圆 k1 逆时针给出, 相切给出两个
 vector<point> getCC(circle k1, circle k2) {
     int pd = checkposCC(k1, k2);
     if (pd == 0 || pd == 4)
@@ -290,7 +290,7 @@ vector<point> getCC(circle k1, circle k2) {
     point k = (k2.o - k1.o).unit(), m = k1.o + k * b, del = k.rotleft() * c;
     return {m - del, m + del};
 }
-// 点到圆的切点,沿圆 k1 逆时针给出, 注意未判位置关系!!
+// 点到圆的切点, 沿圆 k1 逆时针给出, 注意未判位置关系
 vector<point> TangentCP(circle k1, point k2) {
     db a = (k2 - k1.o).abs(), b = k1.r * k1.r / a,
        c = sqrt(max((db)0.0, k1.r * k1.r - b * b));
@@ -430,7 +430,7 @@ int checkconvex(vector<point> A) {
             return 0;
     return 1;
 }
-// 点与简单多边形位置关系：2 内部 1 边界 0 外部
+// 点与简单多边形位置关系: 2 内部 1 边界 0 外部
 int contain(vector<point> A, point q) {
     int pd = 0;
     A.push_back(A[0]);
@@ -494,7 +494,7 @@ db convexDiameter(vector<point> A) {
     }
     return ans;
 }
-// 直线切凸包，保留 k1,k2,p 逆时针的所有点
+// 直线切凸包, 保留 k1,k2,p 逆时针的所有点
 vector<point> convexcut(vector<point> A, point k1, point k2) {
     int n = A.size();
     A.push_back(A[0]);
@@ -588,9 +588,9 @@ int checkPosFast(vector<point> A, point k1, point k2) {
 
 /* 普通凸包中的二分 */
 
-// 求经过点 x 切凸包 A 的两个切点，返回下标。方向：A 上 [fi, se] 为点 x
-// 能看到的区域。 需要保证 x 严格在凸包 A 外侧，A 的点数 >= 3 需要保证 A
-// 是严格凸包，即无三点共线
+// 求经过点 x 切凸包 A 的两个切点, 返回下标. 方向: A 上 [fi, se] 为点 x
+// 能看到的区域. 需要保证 x 严格在凸包 A 外侧, A 的点数 >= 3 需要保证 A
+// 是严格凸包, 即无三点共线
 pair<int, int> getTangentCoP(const vector<point> &A, point x) {
     int sz = A.size();
     assert(sz >= 3);
@@ -622,7 +622,7 @@ pair<int, int> getTangentCoP(const vector<point> &A, point x) {
     return {res[0], res[1]};
 }
 
-// 判断点是否在凸多边形 A 内部，flag = 1 严格，0 不严格
+// 判断点是否在凸多边形 A 内部, flag = 1 严格, 0 不严格
 bool containCoP(const vector<point> &A, point x, int flag = 1) {
     int sz = A.size();
     assert(sz >= 3);

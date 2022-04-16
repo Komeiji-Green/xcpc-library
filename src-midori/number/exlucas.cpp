@@ -1,3 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+
+// -p: 素因子
+// -l: 次数
+// return: 本质不同素因子个数
+// 1-base
+int Fact(int x, int *p, int *l);
+
+ll gcd(ll a, ll b) {
+    return b == 0 ? a : gcd(b, a % b);
+}
+
+void exgcd(ll a, ll b, ll &x, ll &y, ll c = 1);
+
+// x === a1 (mod b1), x === a2 (mod b2)
+// 合法性检查: 返回 -1 则为无解
+pair<ll, ll> excrt(ll a1, ll b1, ll a2, ll b2);
+
+
+// --------------------------
+
+
 // 扩展卢卡斯定理
 
 // 扩欧求逆元
@@ -37,14 +62,33 @@ ll C_pk(ll n, ll m, ll p, ll pk) {
     return fz * fm1 % pk * fm2 % pk * mi % pk;
 }
 
+const int N = 107;
+
+int ps[N], l[N];
+
 ll exlucas(ll n, ll m, ll P) {
-    Fact(P); // 素因子分解，见素因子分解.cpp
-    for (int i = 1; i <= cnt2; ++i) {
+    int num = Fact(P, ps, l); // 素因子分解，见素因子分解.cpp
+
+    ll res = 0, mo = 1;
+    for (int i = 1; i <= num; ++i) {
         ll pk = 1;
         for (int j = 0; j < l[i]; ++j) {
-            pk *= p[i];
+            pk *= ps[i];
         }
-        bi[i] = pk, ai[i] = C_pk(n, m, p[i], pk);
+
+        ll x = C_pk(n, m, ps[i], pk);
+        pair<ll, ll> pr = excrt(x, pk, res, mo);
+
+        mo = pr.second;
+        res = pr.first;
     }
-    return excrt(cnt2) % P;
+
+    return res % P;
+}
+
+int main() {
+    ll n, m, p; cin >> n >> m >> p;
+    ll ans = exlucas(n, m, p);
+
+    cout << ans << endl;
 }
