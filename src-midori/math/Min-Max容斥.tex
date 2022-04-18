@@ -1,0 +1,15 @@
+设有数集 $S$, 有:
+
+$$
+\max(S)=\sum\limits_{\varnothing\ne T\subseteq S} (-1)^{|T|-1} \min(T)
+$$
+
+$$
+\min(S)=\sum\limits_{\varnothing\ne T\subseteq S} (-1)^{|T|-1} \max(T)
+$$
+
+\textbf{第 k 大数的 Min-Max 容斥}
+
+$$
+\operatorname{max}_k(S)=\sum\limits_{T\subseteq S,|T|\ge k}(-1)^{|T|-k}\times\binom {|T|-1}{k-1}\times \min(T)
+$$

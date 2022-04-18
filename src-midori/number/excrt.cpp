@@ -5,7 +5,7 @@ ll gcd(ll a, ll b) {
 }
 
 // x === a1 (mod b1), x === a2 (mod b2)
-// 合法性检查：返回 -1 则为无解
+// 合法性检查: 返回 -1 则为无解
 pair<ll, ll> excrt(ll a1, ll b1, ll a2, ll b2) {
     ll g = gcd(b1, b2);
     ll lcm = (b1 / g) * b2;

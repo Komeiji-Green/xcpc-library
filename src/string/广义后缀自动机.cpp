@@ -1,3 +1,6 @@
+// 多串创建 sam 的方法:
+// 在插入每个串前, 设置 last = 1, 然后一路 last = extend(last, c)
+
 int extend(int p, int c) {
 	int np = 0;
 	
@@ -43,4 +46,3 @@ int extend(int p, int c) {
 	
 	return np;
 }
-// 调用的时候直接last = 1然后一路调用last = extend(last, c)就行了

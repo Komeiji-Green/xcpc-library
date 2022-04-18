@@ -1,6 +1,20 @@
-#include<bits/stdc++.h>
-using namespace std;
 typedef long long ll;
+
+// 注意在 MR 里的 fpow 模数超过 int 范围，需要开 __int128
+
+ll mul(ll a, ll b, ll p) {
+    return __int128(a) * b % p;
+}
+
+ll fpow(ll a, ll k, ll p) {
+    ll res = 1; a %= p;
+    for (; k; k >>= 1, a = mul(a, a, p)) {
+        if (k & 1)
+            res = mul(res, a, p);
+    }
+    return res;
+}
+
 
 ll randint(ll l, ll r) {
     static mt19937 eng(time(0));
@@ -18,7 +32,7 @@ bool is_prime(ll x) {
     ll lst[] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
     for(ll a : lst) { //随便选一个素数进行测试
         if(a >= x) break;
-        ll b = Pow(a, t, x); //先算出a^t
+        ll b = fpow(a, t, x); //先算出a^t
         for (int j = 1; j <= s; ++j) { //然后进行s次平方
             ll k = mul(b, b, x);        //求b的平方
             if (k == 1 && b != 1 && b != x - 1) //用二次探测判断
@@ -75,6 +89,7 @@ ll Pollard_Rho(ll n) {
 
 vector<ll> factors;
 
+// 将 n 进行素因子分解，factors: 存放 n 的所有不去重素因子
 void getfactors(ll n) {
     if (n == 1) return;
     if (is_prime(n)) { factors.push_back(n); return; } // 如果是质因子

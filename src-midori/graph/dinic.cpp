@@ -5,7 +5,7 @@ struct edge {
     int to, pre;
     ll w;
 } e[M];
-int last[M], tot = 1;
+int last[N], tot = 1;
 
 void ine(int a, int b, ll w) {
     e[++tot] = (edge){b, last[a], w};

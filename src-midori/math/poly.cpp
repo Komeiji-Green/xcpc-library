@@ -11,7 +11,6 @@ inline void inc(Int &x, Int y, Int mod = P) {
     (x += y) >= mod ? x -= mod : 0; 
 }
 
-
 inline Int fpow(Int x, Int k = P - 2, Int mod = P) {
     Int r = 1;
     for (; k; k >>= 1, x = (ll) x * x % mod)
@@ -163,6 +162,32 @@ Poly inverse(Poly a) {
     dft(a), cdot(a, b), idft(a);
     for (int i = 0; i < m; i++) a[i] = c[i];
     return a;
+}
+
+// return x s.t. x^2 = a mod x^n, n = a.size()
+// not hold x is lexcicalgraphically smallest
+// no need (n & (n - 1)) == 0
+// require a[0] != 0
+Poly polysqrt(Poly a) {
+    int n = a.size();
+    if (n == 1) return {Modroot::calc(2, a[0], P)};
+
+    int m = ((n + 1) >> 1);
+    Poly b = polysqrt(Poly(a.begin(), a.begin() + m));
+    b.resize(n);
+
+    Poly c = b * b;
+    c.resize(n);
+
+    b *= 2;
+    c += a;
+
+    norm(b);
+
+    c = c * inverse(b);
+    c.resize(n);
+
+    return c;
 }
 
 // return: q(len = n - m + 1), a = b * q + r
