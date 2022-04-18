@@ -134,12 +134,6 @@
 
 \begin{document}
 
-	\begin{titlepage}
-		
-		\includepdf{cover_new.pdf}
-
-	\end{titlepage}
-
 	\pagestyle{plain}
 
 	\pagenumbering{roman}
@@ -169,7 +163,7 @@
 
 			\subsection{多项式}
 				\subsubsection{FFT}
-					\inputminted{cpp}{../src-midori/math/MTT.cpp}
+					\inputminted{cpp}{../src-midori/math/FFT.cpp}
 				\subsubsection{NTT}
 					\inputminted{cpp}{../src-midori/math/poly.cpp}
 				\subsubsection{拉格朗日插值}
@@ -216,6 +210,8 @@
 					\input{../src-midori/math/纳什均衡.tex}
 				\subsubsection{康托展开}
 					\input{../src-midori/math/康托展开.tex}
+				\subsubsection{常用NTT素数及原根}
+					\input{../src-midori/math/常用NTT素数及原根.tex}
 
 		\newpage
 		\section{数论}
@@ -303,7 +299,7 @@
 			\subsection{Dijkstra 费用流}
 				\inputminted{cpp}{../src-midori/graph/dijkstra费用流.cpp}
 			
-			\subsection{KM}
+			\subsection{二分图最大带权匹配}
 				\inputminted{cpp}{../src-midori/graph/二分图最大带权匹配.cpp}
 			
 			\subsection{带花树}
@@ -347,27 +343,28 @@
 		\section{几何}
 			\inputminted{cpp}{../src-midori/geometry/geo-jry.cpp}
 		
-		%\newpage
-		%\section{杂项}
-		%	\subsection{java 高精度}
-		%		\inputminted{java}{../src-midori/other/高精度.tex}
-		%	\subsection{重载 umap}
-		%		\inputminted{cpp}{../src-midori/other/重载umap.cpp}
-		%	\subsection{模拟退火}
-		%		\inputminted{cpp}{../src-midori/other/模拟退火.cpp}
-		%	\subsection{对拍}
-		%		\subsubsection{windows 对拍}
-		%			\inputminted{bat}{../src-midori/other/duipai.bat}
-		%		\subsubsection{linux 对拍}
-		%			\inputminted{shell}{../src-midori/other/duipai.sh}
-		%	\subsection{快读}
-		%		\inputminted{cpp}{../src-midori/other/fread.cpp}
-		%	\subsection{随机}
-		%		\inputminted{cpp}{../src-midori/other/rand.cpp}
-		%	\subsection{python}
-		%		\inputminted{python}{../src-midori/python/sort.py}
+		\newpage
+		\section{杂项}
+			\subsection{java 高精度}
+				\inputminted{java}{../src-midori/other/高精度.java}
+			\subsection{重载 umap}
+				\inputminted{cpp}{../src-midori/other/重载umap.cpp}
+			\subsection{bitset}
+				\inputminted{cpp}{../src-midori/other/bitset.cpp}
+			\subsection{模拟退火}
+				\inputminted{cpp}{../src-midori/other/模拟退火.cpp}
+			\subsection{对拍}
+				\subsubsection{windows 对拍}
+					\inputminted{bat}{../src-midori/other/duipai.bat}
+				\subsubsection{linux 对拍}
+					\inputminted{shell}{../src-midori/other/duipai.sh}
+			\subsection{快读}
+				\inputminted{cpp}{../src-midori/other/fread.cpp}
+			\subsection{随机}
+				\inputminted{cpp}{../src-midori/other/rand.cpp}
+			\subsection{python}
+				\inputminted{python}{../src-midori/python/sort.py}
 		
 	\end{multicols}
 
-	\includepdf[pages = 1-10]{../src/misc/Cheat.pdf}
 \end{document}
